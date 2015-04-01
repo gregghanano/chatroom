@@ -1,0 +1,24 @@
+.textarea{
+	display:block;
+	height: 400px;
+	max-width: 775px;
+	margin-bottom:20px;
+	border:1px solid black;
+	padding-left: 20px;
+	overflow:scroll;
+}
+#new-message{
+	display:block;
+	height: 50px;
+	width: 800px;
+	margin-bottom: 20px;
+}
+button {
+	vertical-align: top;
+	width: 150px;
+	height: 30px;
+	margin-left: 650px;
+	background-color: blue;
+	border-radius: 10px;
+	color:white;
+}

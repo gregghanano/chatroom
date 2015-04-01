@@ -1,0 +1,53 @@
+<html>
+<head>
+	<title>Chat Room</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script type = "text/javascript" src="/socket.io/socket.io.js"></script>
+	<script type = "text/javascript">
+		$(document).ready(function(){
+			//this triggers the connection event in our server!
+			var socket = io.connect();
+			//we'll write all the socket stuff after the above line!
+			var user = prompt('What is your name?');
+
+			socket.on('show_previous',function(data){
+				//console.log('hi');
+				for(var x in data){
+					$('.messages').append('<p>' + data[x].name + ' has entered the room!</p>');
+					};
+				});					
+			socket.on('show_old_messages', function(data){
+				for(var x in data){
+					$('.messages').append('<p>' + data[x].name +': ' + data[x].message + '</p>');
+				}
+				$('.textarea').scrollTop(10000);
+			});
+			socket.emit('new_user', {name: user});
+			socket.on('new_user', function(data){
+				$('.messages').append('<p>'+data.name+' has entered the room!</p>');
+			});
+			$('#button').click(function(){
+				socket.emit('new_message', {name: user, message: $('#new-message').val()});
+				$('#new-message').val('');
+				$('.textarea').scrollTop(10000);
+
+			})
+			socket.on('new_message', function(data){
+				$('.messages').append('<p>' + data.name +': ' + data.message + '</p>');
+			})
+			socket.on('exit', function(data){
+				console.log(data);
+				$('.messages').append('<p>' + data.message + '</p>');
+			})
+		});
+	</script>
+</head>
+<body>
+	<h1>Conversation Board</h1>
+	<div class='textarea'><div class='messages'></div></div>
+	<textarea id='new-message' name='new-message'></textarea>
+	<button id='button'>SEND</button>
+
+</body>
+</html>

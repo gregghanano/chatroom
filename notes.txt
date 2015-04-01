@@ -1,0 +1,9 @@
+1. prompt the user to enter their name, check if other names are in sesion data
+2. when new user joins, EMIT "new_user_joined" to server
+3. Server LISTEN for "new_user_joined" and BROADCAST that new user has joined and EMIT "new user has joined the room". Load previous messages (save messages to a global variable in server). Client listens for "new_user_joined" and gets notified
+4. users enter message and EMIT "message" to server.
+5. Server LISTENS for message and FULL BROADCASTS message to everyone.
+6. client LISTENS for message and sees it in the message area.
+6. user disconnects, EMITS "user_disconnected" to server
+7. Server LISTENS, broadcasts "user disconnected" to users
+8. clients listen for "user_disconnected" and renders message.

@@ -13,8 +13,8 @@ app.get('/', function (req,res){
 	res.render('index');
 })
 
-var server = app.listen(8000, function(){
-	console.log('Listening on port 8000');
+var server = app.listen(1234, function(){
+	console.log('Listening on port 1234');
 })
 
 var io = require('socket.io').listen(server);

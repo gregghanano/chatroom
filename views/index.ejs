@@ -10,6 +10,8 @@
 			var socket = io.connect();
 			//we'll write all the socket stuff after the above line!
 			var user = prompt('What is your name?');
+			var date = Date.now();
+			console.log(date + ' this is the date!');
 
 			socket.on('show_previous',function(data){
 				//console.log('hi');
@@ -34,7 +36,8 @@
 
 			})
 			socket.on('new_message', function(data){
-				$('.messages').append('<p>' + data.name +': ' + data.message + '</p>');
+				var messageDate = Date.now();
+				$('.messages').append('<p>' + data.name +': ' + data.message + '</p>' + '<p>Sent at ' + messageDate);
 			})
 			socket.on('exit', function(data){
 				console.log(data);
@@ -44,9 +47,9 @@
 	</script>
 </head>
 <body>
-	<h1>Conversation Board</h1>
+	<h1>Chatroom!</h1>
 	<div class='textarea'><div class='messages'></div></div>
-	<textarea id='new-message' name='new-message'></textarea>
+	<input type='text' id='new-message' name='new-message'>
 	<button id='button'>SEND</button>
 
 </body>

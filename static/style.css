@@ -1,24 +1,33 @@
+*{
+	font-family: helvetica, arial, sans-serif;
+}
 .textarea{
 	display:block;
 	height: 400px;
-	max-width: 775px;
+	width: 80%;
 	margin-bottom:20px;
 	border:1px solid black;
 	padding-left: 20px;
 	overflow:scroll;
 }
 #new-message{
-	display:block;
-	height: 50px;
-	width: 800px;
+	display:inline-block;
+	padding-left:;
+	height: 30px;
+	width: 70%;
 	margin-bottom: 20px;
+	margin-right: 10px;
 }
 button {
 	vertical-align: top;
-	width: 150px;
-	height: 30px;
-	margin-left: 650px;
+	width: 100px;
+	height: 20px;
+	/*margin-left: 650px;*/
 	background-color: blue;
-	border-radius: 10px;
+	border-radius: 20px;
 	color:white;
+	display:inline-block;
+}
+#button {
+	padding-top: 4px;
 }
